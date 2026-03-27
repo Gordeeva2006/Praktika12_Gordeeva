@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	include("./settings/connect_datebase.php");
 ?>
 <!DOCTYPE HTML>
@@ -54,7 +53,7 @@
 											echo '</div>';
 
 											
-											if (isset($_SESSION['user'])) {
+											if (isset($_COOKIE['user'])) {
 												echo 
 													'<div class="messages" id="'.$read_news["id"].'">
 														<input type="text">

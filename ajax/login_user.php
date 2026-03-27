@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	include("../settings/connect_datebase.php");
 	
 	$login = $_POST['login'];
@@ -14,7 +13,12 @@
 	}
 	
 	if($id != -1) {
-		$_SESSION['user'] = $id;
+		setcookie("user", $id, [
+        	'expires' => time() + 3600,
+        	'path' => '/',
+        	'secure' => true,
+        	'httponly' => true
+    	]);
 	}
 	echo md5(md5($id));
 ?>

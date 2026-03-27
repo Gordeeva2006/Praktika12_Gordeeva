@@ -1,11 +1,10 @@
 <?php
-	session_start();
 	include("./settings/connect_datebase.php");
 	
-	if (isset($_SESSION['user'])) {
-		if($_SESSION['user'] != -1) {
+	if (isset($_COOKIE['user'])) {
+		if($_COOKIE['user'] != -1) {
 			
-			$user_query = $mysqli->query("SELECT * FROM `users` WHERE `id` = ".$_SESSION['user']);
+			$user_query = $mysqli->query("SELECT * FROM `users` WHERE `id` = ".$_COOKIE['user']);
 			while($user_read = $user_query->fetch_row()) {
 				if($user_read[3] == 0) header("Location: user.php");
 				else if($user_read[3] == 1) header("Location: admin.php");
